@@ -25,6 +25,7 @@ import {
 	CarouselNext,
 } from "@/components/ui/carousel";
 import { Card } from "@/components/ui/card";
+import { JSX, SVGProps } from "react";
 
 export function Partnerships() {
 	return (
@@ -119,7 +120,9 @@ export function Partnerships() {
 	);
 }
 
-function ChevronLeftIcon(props) {
+function ChevronLeftIcon(
+	props: JSX.IntrinsicAttributes & SVGProps<SVGSVGElement>
+) {
 	return (
 		<svg
 			{...props}
@@ -138,7 +141,9 @@ function ChevronLeftIcon(props) {
 	);
 }
 
-function ChevronRightIcon(props) {
+function ChevronRightIcon(
+	props: JSX.IntrinsicAttributes & SVGProps<SVGSVGElement>
+) {
 	return (
 		<svg
 			{...props}

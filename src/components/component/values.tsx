@@ -24,6 +24,7 @@ To read more about using these font, please visit the Next.js documentation:
 - Pages Directory: https://nextjs.org/docs/pages/building-your-application/optimizing/fonts
 **/
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
+import { JSX, SVGProps } from "react";
 
 export function Values() {
 	return (
@@ -105,7 +106,7 @@ export function Values() {
 	);
 }
 
-function HeartIcon(props) {
+function HeartIcon(props: JSX.IntrinsicAttributes & SVGProps<SVGSVGElement>) {
 	return (
 		<svg
 			{...props}
@@ -124,7 +125,7 @@ function HeartIcon(props) {
 	);
 }
 
-function LeafIcon(props) {
+function LeafIcon(props: JSX.IntrinsicAttributes & SVGProps<SVGSVGElement>) {
 	return (
 		<svg
 			{...props}
@@ -144,7 +145,7 @@ function LeafIcon(props) {
 	);
 }
 
-function TargetIcon(props) {
+function TargetIcon(props: JSX.IntrinsicAttributes & SVGProps<SVGSVGElement>) {
 	return (
 		<svg
 			{...props}
@@ -165,7 +166,7 @@ function TargetIcon(props) {
 	);
 }
 
-function UsersIcon(props) {
+function UsersIcon(props: JSX.IntrinsicAttributes & SVGProps<SVGSVGElement>) {
 	return (
 		<svg
 			{...props}
