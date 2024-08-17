@@ -1,11 +1,14 @@
 import React, { ReactNode } from "react";
 
-type PageProps = {
-	children: ReactNode;
-};
+type PageProps = {};
 
-const Page: React.FC<PageProps> = ({ children }) => {
-	return <div className="page">{children}</div>;
+const Page: React.FC<PageProps> = () => {
+	return (
+		<div>
+			{/* Page content */}
+			<h1>Communities</h1>
+		</div>
+	);
 };
 
 export default Page;
