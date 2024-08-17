@@ -35,8 +35,9 @@ export function Partnerships() {
 						Our Partners
 					</h2>
 					<p className="max-w-[700px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-						We're proud to work with these amazing organizations to
-						make a positive impact.
+						{
+							"We're proud to work with these amazing organizations to make a positive impact."
+						}
 					</p>
 				</div>
 				<div className="mt-10 md:mt-12 lg:mt-16 flex justify-center">
@@ -60,8 +61,9 @@ export function Partnerships() {
 										Partner Name
 									</h3>
 									<p className="text-muted-foreground text-sm">
-										Short description of partner's
-										involvement
+										{
+											"Short description of partner's involvement"
+										}
 									</p>
 								</Card>
 							</CarouselItem>
@@ -78,8 +80,9 @@ export function Partnerships() {
 										Partner Name
 									</h3>
 									<p className="text-muted-foreground text-sm">
-										Short description of partner's
-										involvement
+										{
+											"Short description of partner's involvement"
+										}
 									</p>
 								</Card>
 							</CarouselItem>
@@ -96,8 +99,9 @@ export function Partnerships() {
 										Partner Name
 									</h3>
 									<p className="text-muted-foreground text-sm">
-										Short description of partner's
-										involvement
+										{
+											"Short description of partner's involvement"
+										}
 									</p>
 								</Card>
 							</CarouselItem>
