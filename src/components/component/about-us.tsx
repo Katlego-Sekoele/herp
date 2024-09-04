@@ -163,9 +163,10 @@ export function AboutUs() {
 										Volunteer Coordinator
 									</p>
 									<p className="text-muted-foreground mt-2">
-										Michael's dedication to building strong
-										volunteer networks has been invaluable
-										in expanding our reach and impact.
+										Michael&apos;s dedication to building
+										strong volunteer networks has been
+										invaluable in expanding our reach and
+										impact.
 									</p>
 								</div>
 							</div>
@@ -196,10 +197,10 @@ export function AboutUs() {
 									Get in Touch
 								</h3>
 								<p className="text-muted-foreground leading-relaxed">
-									We'd love to hear from you! Whether you have
-									a question, feedback, or are interested in
-									supporting our work, please don't hesitate
-									to reach out.
+									We&apos;d love to hear from you! Whether you
+									have a question, feedback, or are interested
+									in supporting our work, please don&apos;t
+									hesitate to reach out.
 								</p>
 								<div className="mt-6 space-y-4">
 									<div className="flex items-center gap-2">
@@ -284,8 +285,8 @@ export function AboutUs() {
 									</h3>
 									<p className="text-muted-foreground mt-2">
 										Check out our 2021 annual report to see
-										how we've been making a difference in
-										our community.
+										how we&apos;ve been making a difference
+										in our community.
 									</p>
 									<div className="mt-4">
 										<Link

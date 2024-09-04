@@ -149,8 +149,8 @@ export function GetInvolved() {
 								Our Supporters
 							</h2>
 							<p className="max-w-[100%] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed px-[10%]">
-								We're grateful for the generous support of our
-								funders and partners who help us achieve our
+								We&apos;re grateful for the generous support of
+								our funders and partners who help us achieve our
 								mission.
 							</p>
 							<div className="grid grid-cols-2 gap-4 py-6 sm:grid-cols-4">
@@ -218,8 +218,8 @@ export function GetInvolved() {
 								</h2>
 								<p className="max-w-[600px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
 									Have a question or want to learn more? Fill
-									out the form below and we'll get back to you
-									as soon as possible.
+									out the form below and we&apos;ll get back
+									to you as soon as possible.
 								</p>
 								<form className="grid gap-4 py-6">
 									<div className="grid gap-2">
@@ -257,9 +257,9 @@ export function GetInvolved() {
 									Tell Us Your Story
 								</h2>
 								<p className="max-w-[600px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-									We'd love to hear how our organization has
-									impacted your life or your community. Share
-									your story with us.
+									We&apos;d love to hear how our organization
+									has impacted your life or your community.
+									Share your story with us.
 								</p>
 								<form className="grid gap-4 py-6">
 									<div className="grid gap-2">
