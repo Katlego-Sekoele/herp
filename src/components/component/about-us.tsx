@@ -28,9 +28,6 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { JSX, SVGProps } from "react";
-import { JSX, SVGProps } from "react";
-import { JSX, SVGProps } from "react";
-import { JSX, SVGProps } from "react";
 
 export function AboutUs() {
 	return (

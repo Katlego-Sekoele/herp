@@ -34,7 +34,6 @@ import {
 import Link from "next/link";
 import { Timeline, TimelineItem } from "./timeline";
 import { JSX, SVGProps } from "react";
-import { JSX, SVGProps } from "react";
 
 export function Community() {
 	const timelineItems: TimelineItem[] = [
