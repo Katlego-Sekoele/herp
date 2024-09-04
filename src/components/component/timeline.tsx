@@ -4,7 +4,7 @@
  * Documentation: https://v0.dev/docs#integrating-generated-code-into-your-nextjs-app
  */
 
-import { SVGProps } from "react";
+import { JSX, SVGProps } from "react";
 
 /** Add fonts into your Next.js project:
 
@@ -129,7 +129,9 @@ export function Timeline({ items }: Readonly<TimelineProps>) {
 	);
 }
 
-function CalendarDaysIcon(props) {
+function CalendarDaysIcon(
+	props: JSX.IntrinsicAttributes & SVGProps<SVGSVGElement>
+) {
 	return (
 		<svg
 			{...props}

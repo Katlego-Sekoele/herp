@@ -33,6 +33,8 @@ import {
 } from "@/components/ui/card";
 import Link from "next/link";
 import { Timeline, TimelineItem } from "./timeline";
+import { JSX, SVGProps } from "react";
+import { JSX, SVGProps } from "react";
 
 export function Community() {
 	const timelineItems: TimelineItem[] = [
@@ -481,7 +483,9 @@ export function Community() {
 	);
 }
 
-function ArrowRightIcon(props) {
+function ArrowRightIcon(
+	props: JSX.IntrinsicAttributes & SVGProps<SVGSVGElement>
+) {
 	return (
 		<svg
 			{...props}
@@ -501,7 +505,7 @@ function ArrowRightIcon(props) {
 	);
 }
 
-function MapPinIcon(props) {
+function MapPinIcon(props: JSX.IntrinsicAttributes & SVGProps<SVGSVGElement>) {
 	return (
 		<svg
 			{...props}

@@ -29,6 +29,7 @@ import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
+import { JSX, SVGProps } from "react";
 
 export function GetInvolved() {
 	return (
@@ -323,7 +324,9 @@ export function GetInvolved() {
 	);
 }
 
-function MountainIcon(props) {
+function MountainIcon(
+	props: JSX.IntrinsicAttributes & SVGProps<SVGSVGElement>
+) {
 	return (
 		<svg
 			{...props}

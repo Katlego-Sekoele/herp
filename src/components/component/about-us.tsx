@@ -27,6 +27,10 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
+import { JSX, SVGProps } from "react";
+import { JSX, SVGProps } from "react";
+import { JSX, SVGProps } from "react";
+import { JSX, SVGProps } from "react";
 
 export function AboutUs() {
 	return (
@@ -332,7 +336,9 @@ export function AboutUs() {
 	);
 }
 
-function DownloadIcon(props) {
+function DownloadIcon(
+	props: JSX.IntrinsicAttributes & SVGProps<SVGSVGElement>
+) {
 	return (
 		<svg
 			{...props}
@@ -353,7 +359,7 @@ function DownloadIcon(props) {
 	);
 }
 
-function MailIcon(props) {
+function MailIcon(props: JSX.IntrinsicAttributes & SVGProps<SVGSVGElement>) {
 	return (
 		<svg
 			{...props}
@@ -373,7 +379,7 @@ function MailIcon(props) {
 	);
 }
 
-function MenuIcon(props) {
+function MenuIcon(props: JSX.IntrinsicAttributes & SVGProps<SVGSVGElement>) {
 	return (
 		<svg
 			{...props}
@@ -394,7 +400,7 @@ function MenuIcon(props) {
 	);
 }
 
-function PhoneIcon(props) {
+function PhoneIcon(props: JSX.IntrinsicAttributes & SVGProps<SVGSVGElement>) {
 	return (
 		<svg
 			{...props}
