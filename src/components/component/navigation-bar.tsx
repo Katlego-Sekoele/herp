@@ -26,8 +26,8 @@ import Image from "next/image";
 
 export function NavigationBar() {
 	return (
-		<header className="flex items-center justify-between h-32 px-4 md:px-6 bg-background border-b">
-			<Link href="#" className="flex items-center gap-2" prefetch={false}>
+		<header className="sticky top-0 z-50 flex items-center justify-between h-32 px-4 md:px-6 bg-background border-b">
+			<Link href="/" className="flex items-center gap-2" prefetch={true}>
 				<Image
 					src="/logo.png"
 					alt="Acme Community"
@@ -39,28 +39,28 @@ export function NavigationBar() {
 				<Link
 					href="/"
 					className="text-xl font-medium text-muted-foreground hover:text-foreground"
-					prefetch={false}
+					prefetch={true}
 				>
 					Home
 				</Link>
 				<Link
 					href="/communities"
 					className="text-lg font-medium text-muted-foreground hover:text-foreground"
-					prefetch={false}
+					prefetch={true}
 				>
 					Our Communities
 				</Link>
 				<Link
-					href="#"
+					href="/about-us"
 					className="text-lg font-medium text-muted-foreground hover:text-foreground"
-					prefetch={false}
+					prefetch={true}
 				>
 					About Us
 				</Link>
 				<Link
-					href="#"
+					href="/get-involved"
 					className="text-lg font-medium text-muted-foreground hover:text-foreground"
-					prefetch={false}
+					prefetch={true}
 				>
 					Get Involved
 				</Link>
