@@ -368,10 +368,10 @@ export function Community() {
 							</CardHeader>
 							<CardContent>
 								<p className="text-muted-foreground">
-									"The community center has been a lifeline
-									for my family.\n The programs and resources
-									available have truly made a\n difference in
-									our lives."
+									&quot;The community center has been a
+									lifeline for my family.\n The programs and
+									resources available have truly made a\n
+									difference in our lives.&quot;
 								</p>
 							</CardContent>
 						</Card>
@@ -395,11 +395,11 @@ export function Community() {
 							</CardHeader>
 							<CardContent>
 								<p className="text-muted-foreground">
-									"Volunteering at the community center has
-									been an incredibly\n rewarding experience.
-									I&apos;ve met so many wonderful people and\n
-									feel like I&apos;m making a real
-									difference."
+									&quot;Volunteering at the community center
+									has been an incredibly\n rewarding
+									experience. I&apos;ve met so many wonderful
+									people and\n feel like I&apos;m making a
+									real difference.&quot;
 								</p>
 							</CardContent>
 						</Card>
@@ -423,11 +423,11 @@ export function Community() {
 							</CardHeader>
 							<CardContent>
 								<p className="text-muted-foreground">
-									"The community center has been the heart and
-									soul of our\n neighborhood for decades.
-									It&apos;s a place where people come\n
-									together, support one another, and make a
-									real difference."
+									&quot;The community center has been the
+									heart and soul of our\n neighborhood for
+									decades. It&apos;s a place where people
+									come\n together, support one another, and
+									make a real difference.&quot;
 								</p>
 							</CardContent>
 						</Card>
