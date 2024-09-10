@@ -26,27 +26,35 @@ To read more about using these font, please visit the Next.js documentation:
 **/
 import Link from "next/link";
 import React from "react";
-import { CMSClient, homePageModel } from "@/lib/cms";
-
-export type HeroContent = {
-	description: string;
-	heading: string;
-} | null;
+import { homePageModel } from "@/lib/cms";
+import { CONTENT_TYPE_IDS } from "@/lib/cms";
 
 export function Hero() {
 	const [state, setState] = React.useState<homePageModel | null>(null);
-	const cms = new CMSClient<homePageModel>();
 
 	React.useEffect(() => {
-		cms.getLatestEntries(CMSClient.CONTENT_TYPE_IDS.HOME, 1).then((data: homePageModel) => {
-			setState(data);
+		const apiUrl = new URL('/api/cms', window.location.origin);
+		const params = new URLSearchParams({
+			contentTypeId: CONTENT_TYPE_IDS.HOME,
+			limit: '1',
+			// You can add more parameters here if needed
 		});
+		apiUrl.search = params.toString();
+
+		fetch(apiUrl.toString())
+			.then(response => response.json())
+			.then((data: homePageModel) => {
+				if (data) {
+					setState(data);
+				}
+			})
+			.catch(error => console.error('Error fetching data:', error));
 	}, []);
 
 	return (
 		<section
 			className="relative w-full h-[80vh] flex items-center justify-center bg-cover bg-center bg-no-repeat"
-			style={{ backgroundImage: state?.heroImage ? `url(${state?.heroImage})` : "" }}
+			style={{ backgroundImage: state?.heroImage ? `url(${state.heroImage})` : "" }}
 		>
 			<div className="absolute inset-0 bg-black/50 z-0" />
 			<div className="relative z-10 text-center max-w-3xl px-6">

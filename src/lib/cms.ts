@@ -1,14 +1,16 @@
 import { createClient, ContentfulClientApi, EntrySys, OrderFilterPaths, EntryCollection, EntrySkeletonType } from "contentful";
 
+export const CONTENT_TYPE_IDS = {
+	HOME: "homePage",
+} as const;
+
 export class CMSClient<ContentType> {
 	private client: ContentfulClientApi<undefined>;
-	static CONTENT_TYPE_IDS = {
-		HOME: "homePage",
-	} as const;
+	static CONTENT_TYPE_IDS = CONTENT_TYPE_IDS;
 
 	constructor() {
-		const accessToken = process.env.NEXT_PUBLIC_CONTENTFUL_ACCESS_TOKEN;
-		const spaceId = process.env.NEXT_PUBLIC_CONTENTFUL_SPACE_ID;
+		const accessToken = process.env.CONTENTFUL_ACCESS_TOKEN;
+		const spaceId = process.env.CONTENTFUL_SPACE_ID;
 
 		if (!accessToken || !spaceId) {
 			throw new Error('Contentful access token or space ID is missing');
@@ -42,8 +44,9 @@ export class CMSClient<ContentType> {
 	}
 
 	private transformData(entries: EntryCollection<EntrySkeletonType, undefined, string>, contentType: keyof typeof CMSClient.CONTENT_TYPE_IDS): homePageModel[] {
-		if (contentType as string === CMSClient.CONTENT_TYPE_IDS.HOME as string) {
-			const data = entries.items.map((item) => {
+		switch (contentType) {
+			case CMSClient.CONTENT_TYPE_IDS.HOME:
+				const data = entries.items.map((item) => {
 				return {
 					heroTitle: item.fields.heroTitle,
 					heroDescription: item.fields.heroDescription,
@@ -53,16 +56,9 @@ export class CMSClient<ContentType> {
 				} as homePageModel;
 			});
 			return data;
+			default:
+				throw new Error(`Unsupported content type: ${contentType}`);
 		}
-	}
-
-	async getEntryByContentType<ContentType>(contentType: keyof typeof CMSClient.CONTENT_TYPE_IDS, limit: number = 10, order: (OrderFilterPaths<EntrySys, "sys"> | "sys.contentType.sys.id" | "-sys.contentType.sys.id" | `fields.${string}` | `-fields.${string}` | `fields.${string}.sys.id` | `-fields.${string}.sys.id`)[] = ['sys.createdAt']) {
-		const entries = await this.client.getEntries({
-			content_type: CMSClient.CONTENT_TYPE_IDS[contentType],
-			limit,
-			order,
-		});
-		return entries;
 	}
 }
 
