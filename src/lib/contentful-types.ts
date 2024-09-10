@@ -206,7 +206,7 @@ export interface CommunityPage {
   name: string;
   description: string;
   featuredStories: Story[];
-  legends: Legend[];
+  legends: any[]; // TODO: Define this type
   images: Asset[];
   history: RichTextContent;
   impactStories: Story[];
