@@ -72,36 +72,36 @@ export function NavigationBar() {
 						<span className="sr-only">Toggle navigation</span>
 					</Button>
 				</SheetTrigger>
-				<SheetContent side="left" className="sm:max-w-xs">
-					<nav className="grid gap-4 p-4 text-lg font-medium">
+				<SheetContent side="right" className="sm:max-w-xs">
+					<nav className="grid gap-4 p-4 text-lg font-large">
 						<Link
-							href="#"
+							href="/"
 							className="flex items-center gap-4 text-muted-foreground hover:text-foreground"
-							prefetch={false}
+							prefetch={true}
 						>
 							<HomeIcon className="w-5 h-5" />
 							Home
 						</Link>
 						<Link
-							href="#"
+							href="/communities"
 							className="flex items-center gap-4 text-muted-foreground hover:text-foreground"
-							prefetch={false}
+							prefetch={true}
 						>
 							<UsersIcon className="w-5 h-5" />
 							Our Communities
 						</Link>
 						<Link
-							href="#"
+							href="/about-us"
 							className="flex items-center gap-4 text-muted-foreground hover:text-foreground"
-							prefetch={false}
+							prefetch={true}
 						>
 							<InfoIcon className="w-5 h-5" />
 							About Us
 						</Link>
 						<Link
-							href="#"
+							href="/get-involved"
 							className="flex items-center gap-4 text-muted-foreground hover:text-foreground"
-							prefetch={false}
+							prefetch={true}
 						>
 							<HandIcon className="w-5 h-5" />
 							Get Involved
