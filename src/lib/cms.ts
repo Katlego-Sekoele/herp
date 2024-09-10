@@ -1,4 +1,4 @@
-import { createClient, ContentfulClientApi, EntrySys, OrderFilterPaths, EntryCollection, EntrySkeletonType } from "contentful";
+import { createClient, ContentfulClientApi, EntrySys, OrderFilterPaths, EntryCollection, EntrySkeletonType, Asset } from "contentful";
 
 export const CONTENT_TYPE_IDS = {
 	HOME: "homePage",
@@ -25,7 +25,7 @@ export class CMSClient<ContentType> {
 	async getAllEntries() {
 		const entries = await this.client.getEntries();
 		return entries;
-	}	
+	}
 
 	async getLatestEntries<ContentType>(contentType: keyof typeof CMSClient.CONTENT_TYPE_IDS, limit: number = 10, order: (OrderFilterPaths<EntrySys, "sys"> | "sys.contentType.sys.id" | "-sys.contentType.sys.id" | `fields.${string}` | `-fields.${string}` | `fields.${string}.sys.id` | `-fields.${string}.sys.id`)[] = ['-sys.createdAt']): Promise<homePageModel | homePageModel[]> {
 		const contentTypeId = CMSClient.CONTENT_TYPE_IDS[contentType];
@@ -39,23 +39,23 @@ export class CMSClient<ContentType> {
 
 		if (limit === 1) {
 			return data[0];
-		}	
+		}
 		return data;
 	}
 
 	private transformData(entries: EntryCollection<EntrySkeletonType, undefined, string>, contentType: keyof typeof CMSClient.CONTENT_TYPE_IDS): homePageModel[] {
 		switch (contentType) {
-			case CMSClient.CONTENT_TYPE_IDS.HOME:
+			case CMSClient.CONTENT_TYPE_IDS.HOME as keyof typeof CMSClient.CONTENT_TYPE_IDS:
 				const data = entries.items.map((item) => {
-				return {
-					heroTitle: item.fields.heroTitle,
-					heroDescription: item.fields.heroDescription,
-					buttonText: item.fields.buttonText,
-					buttonLink: item.fields.buttonLink,
-					heroImage: item.fields.heroImage?.fields?.file?.url || ""
-				} as homePageModel;
-			});
-			return data;
+					return {
+						heroTitle: item.fields.heroTitle,
+						heroDescription: item.fields.heroDescription,
+						buttonText: item.fields.buttonText as string,
+						buttonLink: item.fields.buttonLink as string,
+						heroImage: (item.fields.heroImage as Asset)?.fields?.file?.url || ""
+					} as homePageModel;
+				});
+				return data;
 			default:
 				throw new Error(`Unsupported content type: ${contentType}`);
 		}
