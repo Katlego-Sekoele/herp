@@ -26,50 +26,50 @@ To read more about using these font, please visit the Next.js documentation:
 **/
 import Link from "next/link";
 import React from "react";
-import { homePageModel } from "@/lib/cms";
-import { CONTENT_TYPE_IDS } from "@/lib/cms";
+import { HomePageModel, CONTENT_TYPE_IDS } from "@/lib/cms";
+import { useQuery } from "@tanstack/react-query";
+import { getDataFromCMS } from "@/lib/query-functions";
+import { LoadingIndicatorComponent } from "../loading-indicator";
 
 export function Hero() {
-	const [state, setState] = React.useState<homePageModel | null>(null);
+	// Queries
+	const query = useQuery<HomePageModel | null>({
+		queryKey: ["homePageData"],
+		queryFn: () => getDataFromCMS(CONTENT_TYPE_IDS.HOME),
+	});
 
-	React.useEffect(() => {
-		const apiUrl = new URL('/api/cms', window.location.origin);
-		const params = new URLSearchParams({
-			contentTypeId: CONTENT_TYPE_IDS.HOME,
-			limit: '1',
-			// You can add more parameters here if needed
-		});
-		apiUrl.search = params.toString();
-
-		fetch(apiUrl.toString())
-			.then(response => response.json())
-			.then((data: homePageModel) => {
-				if (data) {
-					setState(data);
-				}
-			})
-			.catch(error => console.error('Error fetching data:', error));
-	}, []);
+	if (query.isLoading)
+		return (
+			<div>
+				<LoadingIndicatorComponent />
+			</div>
+		); // Handle loading state
+	if (query.isError)
+		return <div>Error fetching data: {query.error.message}</div>; // Handle error state
 
 	return (
 		<section
 			className="relative w-full h-[80vh] flex items-center justify-center bg-cover bg-center bg-no-repeat"
-			style={{ backgroundImage: state?.heroImage ? `url(${state.heroImage})` : "" }}
+			style={{
+				backgroundImage: query.data?.heroImage
+					? `url(${query.data.heroImage})`
+					: "",
+			}}
 		>
 			<div className="absolute inset-0 bg-black/50 z-0" />
 			<div className="relative z-10 text-center max-w-3xl px-6">
 				<h1 className="text-4xl sm:text-6xl font-bold text-white mb-4">
-					{state?.heroTitle}
+					{query.data?.heroTitle}
 				</h1>
 				<p className="text-lg sm:text-xl text-white mb-8">
-					{state?.heroDescription}
+					{query.data?.heroDescription}
 				</p>
 				<Link
-					href={state?.buttonLink || ""}
+					href={query.data?.buttonLink || ""}
 					className="inline-flex h-12 items-center justify-center rounded-md bg-primary px-8 text-sm font-medium text-primary-foreground shadow transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50"
 					prefetch={false}
 				>
-					{state?.buttonText}
+					{query.data?.buttonText}
 				</Link>
 			</div>
 		</section>

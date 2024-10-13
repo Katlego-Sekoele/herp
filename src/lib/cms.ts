@@ -5,15 +5,15 @@ export const CONTENT_TYPE_IDS = {
 } as const;
 
 export class CMSClient<ContentType> {
-	private client: ContentfulClientApi<undefined>;
-	static CONTENT_TYPE_IDS = CONTENT_TYPE_IDS;
+	private readonly client: ContentfulClientApi<undefined>;
+	static readonly CONTENT_TYPE_IDS = CONTENT_TYPE_IDS;
 
 	constructor() {
 		const accessToken = process.env.CONTENTFUL_ACCESS_TOKEN;
 		const spaceId = process.env.CONTENTFUL_SPACE_ID;
 
 		if (!accessToken || !spaceId) {
-			throw new Error('Contentful access token or space ID is missing');
+			throw new Error("Contentful access token or space ID is missing");
 		}
 
 		this.client = createClient({
@@ -27,7 +27,19 @@ export class CMSClient<ContentType> {
 		return entries;
 	}
 
-	async getLatestEntries<ContentType>(contentType: keyof typeof CMSClient.CONTENT_TYPE_IDS, limit: number = 10, order: (OrderFilterPaths<EntrySys, "sys"> | "sys.contentType.sys.id" | "-sys.contentType.sys.id" | `fields.${string}` | `-fields.${string}` | `fields.${string}.sys.id` | `-fields.${string}.sys.id`)[] = ['-sys.createdAt']): Promise<homePageModel | homePageModel[]> {
+	async getLatestEntries<ContentType>(
+		contentType: keyof typeof CMSClient.CONTENT_TYPE_IDS,
+		limit: number = 10,
+		order: (
+			| OrderFilterPaths<EntrySys, "sys">
+			| "sys.contentType.sys.id"
+			| "-sys.contentType.sys.id"
+			| `fields.${string}`
+			| `-fields.${string}`
+			| `fields.${string}.sys.id`
+			| `-fields.${string}.sys.id`
+		)[] = ["-sys.createdAt"]
+	): Promise<HomePageModel | HomePageModel[]> {
 		const contentTypeId = CMSClient.CONTENT_TYPE_IDS[contentType];
 		const entries = await this.client.getEntries({
 			content_type: contentTypeId,
@@ -43,17 +55,24 @@ export class CMSClient<ContentType> {
 		return data;
 	}
 
-	private transformData(entries: EntryCollection<EntrySkeletonType, undefined, string>, contentType: keyof typeof CMSClient.CONTENT_TYPE_IDS): homePageModel[] {
+	private transformData(
+		entries: EntryCollection<EntrySkeletonType, undefined, string>,
+		contentType: keyof typeof CMSClient.CONTENT_TYPE_IDS
+	): HomePageModel[] {
 		switch (contentType) {
-			case CMSClient.CONTENT_TYPE_IDS.HOME as keyof typeof CMSClient.CONTENT_TYPE_IDS:
-				const data = entries.items.map((item) => {
+			case CMSClient.CONTENT_TYPE_IDS
+				.HOME as keyof typeof CMSClient.CONTENT_TYPE_IDS:
+				let data: HomePageModel[];
+				data = entries.items.map((item) => {
 					return {
 						heroTitle: item.fields.heroTitle,
 						heroDescription: item.fields.heroDescription,
 						buttonText: item.fields.buttonText as string,
 						buttonLink: item.fields.buttonLink as string,
-						heroImage: (item.fields.heroImage as Asset)?.fields?.file?.url || ""
-					} as homePageModel;
+						heroImage:
+							(item.fields.heroImage as Asset)?.fields?.file
+								?.url || "",
+					} as HomePageModel;
 				});
 				return data;
 			default:
@@ -62,7 +81,7 @@ export class CMSClient<ContentType> {
 	}
 }
 
-export interface homePageModel {
+export interface HomePageModel {
 	heroTitle: string;
 	heroDescription: string;
 	buttonText: string;
@@ -70,7 +89,7 @@ export interface homePageModel {
 	heroImage: string;
 }
 
-export interface content {
+export interface Content {
 	home: {
 		hero: {
 			title: string;
